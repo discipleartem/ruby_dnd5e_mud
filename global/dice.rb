@@ -1,4 +1,6 @@
 module Dice
+
+
   def d100
   end
 
@@ -23,4 +25,12 @@ module Dice
 
   def d2
   end
+
+
+
+
+
+
+
+
 end

@@ -24,21 +24,25 @@ class Game < World
 
 
   def intro(text)
-    text[:hello_text].each {|text_key, value| puts value; sleep 2}
-    print text[:user_choose][:default_text]
+    $text[:hello_text].each {|text_key, value| puts value; sleep 2}
+    print $text[:user_choose][:default_text]
     user_choose(gets.chomp.to_i)
+    p "И кстати, в этом мире боги играют в кости ..."
   end
 
   def no_choose(text)
     while true
       if $u_choose == 1
         puts "Вы избрали ответ: #{text[:user_choose][:input_1]}"
+        puts
         break
       elsif $u_choose == 2
         puts "Вы избрали ответ: #{text[:user_choose][:input_2]}, но Вы должны понимать, что выбора у Вас - Нет ..... <зловещий смех>"
+        puts
         break
       else
         puts text[:user_choose][:input_3]
+        puts
         user_choose(gets.chomp.to_i)
       end
     end
@@ -54,8 +58,9 @@ end
 
 #Create Character
 $player = Player.new
+$player.create_character_stats
 $player.create_character
-p $player.main_stat
+p "Игрок обладает такими статами #{$player.main_stat}"
 
 
 
