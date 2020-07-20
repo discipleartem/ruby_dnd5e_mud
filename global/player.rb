@@ -126,6 +126,9 @@ class Player < Races
       user_choose(gets.chomp.to_i)
       correct_player_main_stat_choose
       display_player_main_stats
+
+      player_confirm_main_stats
+      user_choose(gets.chomp.to_i)
       player_choose_main_stats
   end
 

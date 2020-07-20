@@ -1,9 +1,14 @@
 require_relative '../global/dice'
+require 'yaml'
+TEXT_DB = YAML.load_file('global/text.yml')
+TEXT_DB['luck_text']
+TEXT_DB['player']['hair']
+
 
 class World
   include Dice
-
   def initialize
+
     @main_stats_name = {STR: 'Сила', DEX: 'Ловкость', CON: 'Телосложение', INT: 'Интелект', WIS: 'Мудрость', CHAR: 'Харизма', LUCK: 'Удача'}
     @main_stats_info = {
                         STR: 'измеряет физическую мощь',
@@ -12,7 +17,7 @@ class World
                         INT: 'измеряет рассудительность и память',
                         WIS: 'измеряет внимательность и проницательность',
                         CHAR: 'измеряет измеряющая силу характера',
-                        LUCK: 'скрытый параметр, который может влиять на различные ситуации.'
+                        LUCK: TEXT_DB['luck_text']
     }
 
     $main_stats = {STR: 0,

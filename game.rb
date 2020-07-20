@@ -58,6 +58,9 @@ end
 
 #Create Character
 $player = Player.new
+
+$player.$main_stats
+
 $player.create_character_stats
 sleep 2
 
