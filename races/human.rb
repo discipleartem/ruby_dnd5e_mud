@@ -12,7 +12,7 @@ class Human
                                 'разбавлять собственную речь словами, позаимствованными из других языков: орочьими'\
                                 'ругательствами, эльфийскими музыкальными терминами, дварфскими военными командами. '
     }
-    def main_stat
+    def human_main_stats_specify
       $main_stats = $main_stats.each {|key , value| $main_stats[key] = $main_stats[key]+ 1}
     end
 

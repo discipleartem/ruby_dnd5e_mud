@@ -31,5 +31,8 @@ class World
     $u_choose = input
   end
 
-
+  def confirm_choose
+    puts 'Подтвердить: 1'
+    puts 'Вернуться: 2'
+  end
 end

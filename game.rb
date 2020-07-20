@@ -59,8 +59,12 @@ end
 #Create Character
 $player = Player.new
 $player.create_character_stats
-$player.create_character
-p "Игрок обладает такими статами #{$player.main_stat}"
+sleep 2
+
+$player.create_character_race
+sleep 2
+
+display_player_main_stats
 
 
 
