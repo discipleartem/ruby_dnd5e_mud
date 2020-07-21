@@ -10,9 +10,12 @@ intro_text:
     text8: 'Вы согласны: ? ...'
 
 user_choose:
-  default_text1: "Введите '1' - если 'Да'"
-  default_text2: "и '2' - если 'Нет' :"
-  input_1: 'Да'
-  input_2: 'Нет'
-  input_3: 'Вы сделали не правильный выбор, повторите свой выбор ...'
+  output:
+    default_text0: 'Введите:'
+    default_text1: '1 - если Да'
+    default_text2: '2 - если Нет'
+  input:
+    input_1: 'Да'
+    input_2: 'Нет'
+    input_3: 'Вы сделали не правильный выбор, повторите свой выбор ...'
 
