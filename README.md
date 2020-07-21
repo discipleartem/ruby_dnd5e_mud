@@ -1,25 +1,29 @@
 #Try to create MUD game on ruby, using D&amp;D 5 edition rules
 
+v.1.0
+
 file `game.rb` is main for run program.
  
 main Task - create MUD-like game on ruby, using D&D 5 edition rules <br>
 
 To do list:
 
-1. Make choose for player to implement his random value to main stats <br>
-2. Create Races (Elf, Orc) <br>
-        1) add some races specify stats for them<br>
+1. Make Intro text output <br>
+        1) add.yml file for keeping text <br>
+        2) add.yml files for keeping global, player values <br>
 
-3. Create Modifiers (+5) for Main Stats
-4. Create character class 
-5. Create levels (1 - 5)
-6. Create Player statistic method to output Main Stats, HitPoints, etc.
-7. Create Player inventory method
-8. Save created character into file (what format to use ?)
+2. Make player creation <br>
+        1) random 4 dice for 1 value * times for 6 values at Array <br>
+        2) create def for choosing Main Stat <br>
+        3) create def for delete current chosen value from Array <br>
+        4) create def for random LUCK value
+
+3. Make Races creation <br>
+        1) Create class <br>
+        2) create race human <br>
+        3) create race elf <br>
+        4) create race orc <br>
+        5) define common methods and take out to class Races <br>
 
 Done:<br>
-~~- create random for generate player stats~~<br>
-~~- create main stats (STR, WIS,.. etc.)~~<br>
-~~- create random for generate player stats~~<br>
-~~- create human race~~<br>
-~~- many other stuff what I dont write ...~~<br>
+~~- nothing~~<br>
