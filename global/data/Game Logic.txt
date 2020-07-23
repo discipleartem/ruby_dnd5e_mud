@@ -1,0 +1,17 @@
+Game Objects
+
+Game
+    Into
+
+Global
+    Dice
+    Player
+
+parent Races
+    child Human
+        child Player
+    child Elf
+        child Player
+    child Orc
+        child Player
+

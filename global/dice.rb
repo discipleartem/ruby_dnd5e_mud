@@ -5,6 +5,7 @@ module Dice
   end
 
   def d20
+    rand(1..20)
   end
 
   def d12
