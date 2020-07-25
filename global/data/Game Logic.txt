@@ -8,10 +8,8 @@ Global
     Player
 
 parent Races
-    child Human
-        child Player
-    child Elf
-        child Player
-    child Orc
-        child Player
+    method Human
+    method Elf
+    method Orc
+
 

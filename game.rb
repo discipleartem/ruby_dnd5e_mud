@@ -2,24 +2,25 @@ require_relative 'global/intro'
 require_relative 'global/player'
 
 
-class Game
-  include Intro
-end
+include Intro
 
 ############### Game Structure ###############
-game = Game.new
+
 
 #Intro
-game.game_intro
+# game_intro
+# yes_no_choose_text
+# player_yes_no_choose_input('no_choose')
 
-game.yes_no_choose_text
-game.player_yes_no_choose_input('no_choose')
 
 #Player creation
 player = Player.new
-
 player.roll_player_random_stat_dice
-game.character_stats_intro(player)
-game.main_player_stats_info
+character_stats_intro(player)
+main_stats_info_text
+player.main_stats_display(player.main_stat)
+player.player_choose_main_stats_info(player.main_stat)
 
-# Radis
+
+
+# Redis

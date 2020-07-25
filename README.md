@@ -9,9 +9,8 @@ main Task - create MUD-like game on ruby, using D&D 5 edition rules <br>
 To do list:
 
 1. Make player creation <br>
-        2) create def for choosing Main Stat <br>
-        3) create def for delete current chosen value from Array <br>
-        4) create def for random LUCK value
+        4) crete/modify def to protect from multiply choices one main stat
+        5) create def for random LUCK value
 
 2. Make Races creation <br>
         1) Create class <br>
@@ -25,3 +24,5 @@ Done:<br>
         1) add.yml file for keeping text <br>
         2) add.yml files for keeping global, player values~~ <br>
 ~~random 4 dice for 1 value * times for 6 values at Array~~ <br>
+~~2) create def for choosing Main Stat~~ <br>
+~~3) create def for delete current chosen value from Array~~ <br>

@@ -36,7 +36,7 @@ module Intro
     end
   end
 
-  def main_player_stats_info
+  def main_stats_info_text
       index = 1
       main_stat_info = TEXT_GLOBAL['main_stats_info']
       main_stat_info_text = TEXT_GLOBAL['main_stats_info_text']
@@ -46,6 +46,7 @@ module Intro
       end
       puts
     end
+
 
   def character_stats_intro(player)
     puts 'Боги одарили Вас такими значениями Характеристик: '
