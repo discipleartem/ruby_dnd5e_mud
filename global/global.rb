@@ -8,6 +8,7 @@ class Global
 
   TEXT_GLOBAL = YAML.load_file('global/data/global_text.yml')
 
+
   def initialize
     @main_stat = { STR: 0, DEX: 0, CON: 0, INT: 0, WIS: 0, CHAR: 0, LUCK: 0 }
   end

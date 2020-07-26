@@ -5,15 +5,20 @@ require_relative '../global/intro'
 class Player < Global
   attr_accessor :random_player_stats
   attr_accessor :main_stat
+  attr_accessor :tmp_player_key_protect
 
   include Intro
 
 
   def initialize
-    super
+    @main_stat = { STR: 0, DEX: 0, CON: 0, INT: 0, WIS: 0, CHAR: 0, LUCK: 0 }
     @random_player_stats = []
+    @tmp_player_key_protect = []
   end
 
+  # def has_not_key?(object)
+  #   !has_key?(object)
+  # end
 
   def roll_player_random_stat_dice
     puts 'В этом мире боги играют в кости ...'
@@ -37,10 +42,10 @@ class Player < Global
 
 
 
-
   def player_choose_main_stats_info(choose_stat)
     choose_stat = choose_stat
     while choose_stat.any?
+
       puts 'Введите номер характеристики, которую хотите изменить: ...'
       puts "[1] Сила [2] Ловкость [3] Телосложение [4] Интелект [5] Мудрость [6] Харизма"
       puts
@@ -61,29 +66,47 @@ class Player < Global
         player_choose_main_stats_info(choose_stat)
       end
     end
-
   end
 
-  def player_choose_main_stats(player_choose, choose_stat)
+  # def player_main_stat_protect(key)
+  #   tmp_player_key_protect.has_key?(key)
+  # end
+
+
+  def player_choose_main_stats(player_choose, choose_stat, *args)
     player_choose = player_choose
     choose_stat = choose_stat
+    puts "======================================"
+    p tmp_player_key_protect
+    puts "======================================"
+    # && main_stat.has_key?("#{tmp_player_key_protect}")
+    #
+    #need to protect from multiply choices one main stat
 
     if player_choose.between?(1, 6)
+
       key = choose_stat.keys[player_choose - 1]
       text_key =  key.downcase
-      puts "Вы выбрали параметр #{TEXT_GLOBAL['main_stats_info_text']["#{text_key}"]}"
-      yes_no_choose_text
-      user_choice = gets.to_i
 
-      if user_choice == 1
-        p random_player_stats
-        puts 'Введите значение для характеристики, которую Вы хотите улучшить: '
-        player_change_main_stat(key)
+      #protect from multiply choices one main stat
+      unless tmp_player_key_protect.include?(key)
+        puts "Вы выбрали параметр #{TEXT_GLOBAL['main_stats_info_text']["#{text_key}"]}"
+        yes_no_choose_text
+        user_choice = gets.to_i
+        if user_choice == 1
+          p random_player_stats
+          puts 'Введите значение для характеристики, которую Вы хотите улучшить: '
+          player_change_main_stat(key)
+        else
+          puts
+          puts 'Возврат к выбору Характеристик:'
+          main_stats_display(main_stat)
+          player_choose_main_stats_info(choose_stat)
+        end
+
       else
-        puts
-        puts 'Возврат к выбору Характеристик:'
-        main_stats_display(main_stat)
-        player_choose_main_stats_info(choose_stat)
+        puts "Вы уже выбирали Характеристику #{TEXT_GLOBAL['main_stats_info_text']["#{text_key}"]}, выберите другую"
+        player_choose_main_stats(player_choose = gets.to_i, choose_stat)
       end
 
     else
@@ -92,30 +115,33 @@ class Player < Global
     end
   end
 
-    def player_change_main_stat(key)
-      key = key
-      user_choice = gets.to_i
-      player_stat = random_player_stats.find {|stat| stat == user_choice}
-      if player_stat == user_choice
-        main_stat[key] = player_stat
-        p player_stat
+  def player_change_main_stat(key)
+    key = key
+    user_choice = gets.to_i
+    player_stat = random_player_stats.find {|stat| stat == user_choice}
 
-        #remove current player choice value from array random_player_stats
-        random_player_stats.delete_at(random_player_stats.index(player_stat))
+    if player_stat == user_choice
+      main_stat[key] = player_stat
+      tmp_player_key_protect.push(key)
 
-        #aply selected stat (from random_player_stats) to main_stat
-        main_stat[key] = user_choice
+      p player_stat
 
-        #protect from multiply choices one main stat
+      #remove current player choice value from array random_player_stats
+      random_player_stats.delete_at(random_player_stats.index(player_stat))
 
-        main_stats_display(main_stat)
-        puts "Оставшиеся значения: "
-        p random_player_stats
+      #aply selected stat (from random_player_stats) to main_stat
+      main_stat[key] = user_choice
+
+      main_stats_display(main_stat)
+      puts "Оставшиеся значения: "
+      p random_player_stats
+      puts
     else
-      puts 'Вы ввели неверное значения'
+      puts 'Вы ввели неверное значение'
       p random_player_stats
       player_change_main_stat(key)
     end
   end
+
 
 end
