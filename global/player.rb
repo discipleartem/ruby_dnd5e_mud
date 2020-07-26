@@ -16,9 +16,6 @@ class Player < Global
     @tmp_player_key_protect = []
   end
 
-  # def has_not_key?(object)
-  #   !has_key?(object)
-  # end
 
   def roll_player_random_stat_dice
     puts 'В этом мире боги играют в кости ...'
@@ -68,20 +65,11 @@ class Player < Global
     end
   end
 
-  # def player_main_stat_protect(key)
-  #   tmp_player_key_protect.has_key?(key)
-  # end
 
 
   def player_choose_main_stats(player_choose, choose_stat, *args)
     player_choose = player_choose
     choose_stat = choose_stat
-    puts "======================================"
-    p tmp_player_key_protect
-    puts "======================================"
-    # && main_stat.has_key?("#{tmp_player_key_protect}")
-    #
-    #need to protect from multiply choices one main stat
 
     if player_choose.between?(1, 6)
 
@@ -111,9 +99,11 @@ class Player < Global
 
     else
       puts 'Вы ввели неверную Характеристику, которую хотите изменить'
-      player_choose_main_stats(player_choose, choose_stat)
+      player_choose_main_stats(player_choose = gets.to_i, choose_stat)
     end
   end
+
+
 
   def player_change_main_stat(key)
     key = key
