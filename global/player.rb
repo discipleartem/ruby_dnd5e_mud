@@ -1,19 +1,26 @@
 require_relative '../global/global'
 require_relative '../global/intro'
 
+include Intro
 
 class Player < Global
+
   attr_accessor :random_player_stats
   attr_accessor :main_stat
   attr_accessor :tmp_player_key_protect
+  attr_accessor :age
+  attr_accessor :size
+  attr_accessor :speed
+  attr_accessor :languages
 
-  include Intro
+
 
 
   def initialize
-    @main_stat = { STR: 0, DEX: 0, CON: 0, INT: 0, WIS: 0, CHAR: 0, LUCK: 0 }
     @random_player_stats = []
     @tmp_player_key_protect = []
+
+    @main_stat = { STR: 0, DEX: 0, CON: 0, INT: 0, WIS: 0, CHAR: 0, LUCK: 0 }
   end
 
 
@@ -39,9 +46,9 @@ class Player < Global
 
 
 
-  def player_choose_main_stats_info(choose_stat)
-    choose_stat = choose_stat
-    while choose_stat.any?
+  def player_choose_main_stats_info(player)
+    # choose_stat = choose_stat
+    while random_player_stats.any?
 
       puts 'Введите номер характеристики, которую хотите изменить: ...'
       puts "[1] Сила [2] Ловкость [3] Телосложение [4] Интелект [5] Мудрость [6] Харизма"
@@ -50,7 +57,7 @@ class Player < Global
       puts
 
       if player_choose.between?(1, 6)
-        player_choose_main_stats(player_choose, choose_stat)
+        player_choose_main_stats(player_choose, player)
 
       elsif player_choose == 7
         puts "Вы выбрали параметр #{TEXT_GLOBAL['main_stats_info_text']['luck']}"
@@ -58,22 +65,22 @@ class Player < Global
         puts
 
       else
-        puts 'Вы ввели неверное значение для Характеристики'
+        puts '### Вы ввели неверное значение для Характеристики ###'
         puts
-        player_choose_main_stats_info(choose_stat)
+        player_choose_main_stats_info(player)
       end
     end
+    main_stat[:LUCK] = d20
   end
 
 
 
-  def player_choose_main_stats(player_choose, choose_stat, *args)
-    player_choose = player_choose
-    choose_stat = choose_stat
+  def player_choose_main_stats(player_choose, player)
+    # player_choose = player_choose
 
     if player_choose.between?(1, 6)
 
-      key = choose_stat.keys[player_choose - 1]
+      key = main_stat.keys[player_choose - 1]
       text_key =  key.downcase
 
       #protect from multiply choices one main stat
@@ -84,28 +91,28 @@ class Player < Global
         if user_choice == 1
           p random_player_stats
           puts 'Введите значение для характеристики, которую Вы хотите улучшить: '
-          player_change_main_stat(key)
+          puts
+          player_change_main_stat(key, player)
         else
           puts
           puts 'Возврат к выбору Характеристик:'
-          main_stats_display(main_stat)
-          player_choose_main_stats_info(choose_stat)
+          main_stats_display(player)
+          player_choose_main_stats_info(player)
         end
 
       else
-        puts "Вы уже выбирали Характеристику #{TEXT_GLOBAL['main_stats_info_text']["#{text_key}"]}, выберите другую"
-        player_choose_main_stats(player_choose = gets.to_i, choose_stat)
+        puts "### Вы уже выбирали Характеристику #{TEXT_GLOBAL['main_stats_info_text']["#{text_key}"]}, выберите другую ###"
+        player_choose_main_stats(player_choose = gets.to_i)
       end
 
     else
-      puts 'Вы ввели неверную Характеристику, которую хотите изменить'
-      player_choose_main_stats(player_choose = gets.to_i, choose_stat)
+      puts '### Вы ввели неверную Характеристику, которую хотите изменить ###'
+      player_choose_main_stats(player_choose = gets.to_i)
     end
   end
 
 
-
-  def player_change_main_stat(key)
+  def player_change_main_stat(key, player)
     key = key
     user_choice = gets.to_i
     player_stat = random_player_stats.find {|stat| stat == user_choice}
@@ -122,16 +129,28 @@ class Player < Global
       #aply selected stat (from random_player_stats) to main_stat
       main_stat[key] = user_choice
 
-      main_stats_display(main_stat)
+      main_stats_display(player)
       puts "Оставшиеся значения: "
       p random_player_stats
       puts
     else
-      puts 'Вы ввели неверное значение'
+      puts '### Вы ввели неверное значение ###'
       p random_player_stats
-      player_change_main_stat(key)
+      player_change_main_stat(key, player)
     end
   end
 
+  def player_display_languages(player)
+    text = TEXT_GLOBAL['languages']
+    puts 'Вы владеете следующими языками:'
+    if languages
+      languages.each do |key|
+        p text[key.to_s]
+      end
+    else
+      puts 'Вы пока не владеете никакими языками'
+    end
+    puts
+  end
 
 end

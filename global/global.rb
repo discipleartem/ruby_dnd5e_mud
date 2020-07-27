@@ -14,12 +14,20 @@ class Global
   end
 
 
-  def main_stats_display(main_stat)
+  def main_stats_display(player)
+    puts 'Ваши Характеристики:'
     index = 1
     main_stat_info = TEXT_GLOBAL['main_stats_info_text']
     for stat in main_stat_info
       puts "[#{index}] #{stat[1]}: #{main_stat[main_stat.keys[index - 1]]}"
       index +=1
+    end
+    puts
+    player_display_languages(player)
+    unless player.age.nil?
+      p "Ваш возраст: #{player.age}"
+      p "Ваш размер: #{TEXT_GLOBAL['size'][player.size]}"
+      p "Ваша скорость: #{player.speed}"
     end
     puts
   end

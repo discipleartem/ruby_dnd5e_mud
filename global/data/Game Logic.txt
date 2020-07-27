@@ -7,9 +7,12 @@ Global
     Dice
     Player
 
-parent Races
+Races
     method Human
     method Elf
     method Orc
 
-
+Classes
+    method Warrior
+    method Barbarian
+    method Wizard

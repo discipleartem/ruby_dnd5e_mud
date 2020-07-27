@@ -1,5 +1,6 @@
 require_relative 'global/intro'
 require_relative 'global/player'
+require_relative 'global/races'
 
 
 include Intro
@@ -15,12 +16,17 @@ include Intro
 
 #Player creation
 player = Player.new
+
 player.roll_player_random_stat_dice
 character_stats_intro(player)
 main_stats_info_text
-player.main_stats_display(player.main_stat)
-player.player_choose_main_stats_info(player.main_stat)
+player.main_stats_display(player)
+player.player_choose_main_stats_info(player)
+player.main_stats_display(player)
 
-
+#Choosing race
+race = Races.new
+race.races_info(player)
+player.main_stats_display(player)
 
 # Redis
