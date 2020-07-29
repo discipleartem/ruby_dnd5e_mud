@@ -9,9 +9,9 @@ class Player < Global
   attr_accessor :main_stat
   attr_accessor :tmp_player_key_protect
   attr_accessor :age
-  attr_accessor :size
-  attr_accessor :speed
-  attr_accessor :languages
+  # attr_accessor :size
+  # attr_accessor :speed
+  # attr_accessor :languages
 
 
 
@@ -20,6 +20,7 @@ class Player < Global
     @random_player_stats = []
     @tmp_player_key_protect = []
 
+    super
     @main_stat = { STR: 0, DEX: 0, CON: 0, INT: 0, WIS: 0, CHAR: 0, LUCK: 0 }
   end
 
