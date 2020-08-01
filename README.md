@@ -7,11 +7,6 @@ file `game.rb` is main for run program.
 main Task - create MUD-like game on ruby, using D&D 5 edition rules
 
 To do list:
-```
-1. Make Races creation 
-    4) create race orc 
-    5) create race elf 
-```
 
 ```
 2. Make Classes 
@@ -22,7 +17,7 @@ To do list:
 ```
 
 Long-Time:
-- Change languages:make read, write, speak languages
+- Change languages: make read, write, speak languages
 
 
 Done:<br>
@@ -42,3 +37,5 @@ Done:<br>
         ~~1) make ruby class Races~~ <br>
         ~~2) make def to add languages~~ <br>
         ~~3) create race human~~ <br>
+        ~~4) create race orc~~ <br>
+        ~~5) create race elf~~ <br>

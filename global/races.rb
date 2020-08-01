@@ -1,23 +1,25 @@
 require 'yaml'
+require_relative '../global/intro'
 
 class Races
 
+  include Intro
+
   RACE_TEXT = YAML.load_file('global/data/races_text.yml')
+  TEXT = YAML.load_file('global/data/global_text.yml')
 
 
   def races_text(player_choose)
     race = ['human', 'half_orc', 'elf']
+
     RACE_TEXT['races'][race[player_choose - 1]].each do |info|
-      if  info[1].size <= 150
-        puts info[1]
-        puts
-      else
-        puts info[1].split(". ")
-        puts
-      end
+      info_mod = info[1].to_s.split('"').to_s.delete('["').delete('{')
+                   .delete('}').delete(",").delete(']').delete('=>')
+                   .delete('intro').delete('sas_up').delete('languages')
+                   .delete('hgh_elf_ably_1').delete('hgh_elf_ably_2').gsub("\n", ' ').squeeze(' ')
+      text_output_info(info_mod)
     end
   end
-
 
 
   def races_info(player)
@@ -39,6 +41,8 @@ class Races
 
       elsif player_choose == 2 && player_confirm == 1
         half_orc(player)
+      elsif player_choose == 3 && player_confirm == 1
+        elf(player)
       else
         '### Вы сделали неправильный выбор ... ###'
         races_info(player)
@@ -87,7 +91,9 @@ class Races
       end
     end
     age(player, 20, 60)
+    player.vision = {normal: {bright: 30, dim: 30}}
     1.times {set_races_language(player)}
+    player.race = {human: 'Человек'}
   end
 
 
@@ -95,9 +101,26 @@ class Races
   def half_orc(player)
     age(player, 15, 60)
     player.languages.push(:orc)
+    player.main_stat[:STR] = player.main_stat[:STR] + 2
+    player.main_stat[:CON] = player.main_stat[:CON] + 1
+    player.vision = {dark_vision: {bright: 60, dim: 30}}
+    player.skill_proficiency << 'Запугивание'
+    player.race = {half_orc: 'Полуорк'}
+    player.abilities = {relentless_endurance: true}
   end
 
-  def elf
+
+  def elf(player)
+    age(player, 100, 700)
+    player.languages.push(:elf)
+    1.times {set_races_language(player)}
+    player.main_stat[:DEX] = player.main_stat[:DEX] + 2
+    player.main_stat[:INT] = player.main_stat[:INT] + 1
+    player.vision = {dark_vision: {bright: 60, dim: 30}}
+    player.skill_proficiency << 'Внимательность'
+    player.race_abilities << 'Наследие фей' << 'Транс'
+    player.weapon_proficiency << 'long_sword' << 'short_sword' << 'long_bow' << 'short_bow'
+    player.magic = player.magic.merge({cantrip_race: {count: 1, main_stat: :INT}})
   end
 
   def age(player, age_1, age_2)

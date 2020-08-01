@@ -57,6 +57,16 @@ module Intro
     puts
   end
 
+  def text_output_info(text)
+    if  text.size <= 150
+      puts text
+      puts
+    else
+      puts text.split(". ")
+      puts
+    end
+  end
+
 
 
 

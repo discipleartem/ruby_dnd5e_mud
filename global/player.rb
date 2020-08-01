@@ -1,5 +1,6 @@
 require_relative '../global/global'
 require_relative '../global/intro'
+require_relative '../global/weapon'
 
 include Intro
 
@@ -9,10 +10,6 @@ class Player < Global
   attr_accessor :main_stat
   attr_accessor :tmp_player_key_protect
   attr_accessor :age
-  # attr_accessor :size
-  # attr_accessor :speed
-  # attr_accessor :languages
-
 
 
 
