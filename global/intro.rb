@@ -1,5 +1,6 @@
 require 'yaml'
 require_relative '../global/dice'
+require_relative '../global/data/color'
 
 
 module Intro
@@ -41,7 +42,7 @@ module Intro
       main_stat_info = TEXT_GLOBAL['main_stats_info']
       main_stat_info_text = TEXT_GLOBAL['main_stats_info_text']
       for main_stat in main_stat_info
-        puts "[#{index}] #{main_stat_info_text[main_stat[0]]}: #{main_stat_info[main_stat[0]]}"
+        puts "[#{index}]" + " #{main_stat_info_text[main_stat[0]]}: ".color_stat_text[:main_stat][index - 1] + "#{main_stat_info[main_stat[0]]}"
         index +=1
       end
       puts
@@ -49,25 +50,48 @@ module Intro
 
 
   def character_stats_intro(player)
-    puts 'Боги одарили Вас такими значениями Характеристик: '
-    puts  "#{player.random_player_stats}"
+    puts 'Боги одарили Вас такими значениями ' + 'Характеристик'.blue
+    d20_text(player.random_player_stats)
+    puts
     puts
     puts "Вы можете самостоятельно распределить эти значения по ключевым Характеристикам: "
-    puts 'Кроме параметра Удачи,- он даруеться богами'
+    puts 'Кроме параметра ' + 'Удачи'.brown + ',- он даруеться ' + 'богами.'.cyan
     puts
+    sleep 2
   end
 
-  def text_output_info(text)
+  def d20_text(*args)
+    args = args.flatten
+    print '['
+    args.each do |t|
+      if t >= 17
+        print t.to_s.green + ' '
+      elsif t <= 9
+        print t.to_s.red + ' '
+      else
+        print t.to_s + ' '
+      end
+    end
+    print ']'
+  end
+
+  def text_output_info(text, player_choose)
     if  text.size <= 150
-      puts text
+      puts text.color_stat_text[:races][player_choose - 1]
       puts
     else
-      puts text.split(". ")
+      puts text.split(". ").to_s.delete('[').delete(']').delete('"')
+             .color_stat_text[:races][player_choose - 1]
       puts
     end
   end
 
 
+  def color_stat_text
+    color = {main_stat: [brown, green, red, blue, cyan, magenta, gray],
+            races: [blue, green, brown,]
+    }
+  end
 
 
 end

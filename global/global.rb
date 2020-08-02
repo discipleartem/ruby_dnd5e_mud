@@ -1,9 +1,11 @@
 require_relative '../global/dice'
 require_relative '../global/weapon'
+require_relative '../global/intro'
 require 'yaml'
 
 class Global
   include Dice
+  include Intro
 
   attr_accessor :main_stat
   attr_accessor :size
@@ -43,33 +45,39 @@ class Global
     main_stat_info = TEXT_GLOBAL['main_stats_info_text']
     for stat in main_stat_info
       unless stat[0] == "luck"
-        puts "[#{index}] #{stat[1]}: #{main_stat[main_stat.keys[index - 1]]}"
+        puts "[#{index}] " + "#{stat[1]}: ".color_stat_text[:main_stat][index - 1]  + "#{main_stat[main_stat.keys[index - 1]]}"
         index +=1
       end
     end
     puts
     player_display_languages(player)
     unless player.age.nil?
-      p "Ваш возраст: #{player.age}"
+      if player.age >= 100
+        print 'Ваш возраст: ' + "#{player.age}".brown
+        puts
+      else
+        p "Ваш возраст: #{player.age}"
+      end
       p "Ваш размер: #{TEXT_GLOBAL['size'][player.size]}"
       p "Ваша скорость: #{player.speed}"
+
       p 'Вы владеете следующими рассовыми способностями:'
-      player.race_abilities.each { |ra| puts ra }
+      player.race_abilities.each { |ra| puts ra.magenta }
       puts
 
       p 'Вы владеете следующими навыками:'
-      player.skill_proficiency.each { |sp| puts sp }
+      player.skill_proficiency.each { |sp| puts sp.cyan }
       puts
 
       p 'Вы владеете следующим оружием:'
-      player.weapon_proficiency.each { |wp| puts wp }
+      player.weapon_proficiency.each { |wp| puts wp.brown }
       puts
 
       p 'Вы владеете следующими магическими навыками:'
       player.magic.each do |skill|
         puts "#{TEXT_GLOBAL['magic']['cantrip_race']}:"
         puts "- #{TEXT_GLOBAL['magic']['count']}: #{skill[1][:count]}."
-        puts "- #{TEXT_GLOBAL['magic']['main_stat']}: #{skill[1][:main_stat]}"
+        puts "- #{TEXT_GLOBAL['magic']['main_stat']}: " + "#{skill[1][:main_stat]}".blue
       end
       puts
     end

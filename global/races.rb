@@ -17,7 +17,7 @@ class Races
                    .delete('}').delete(",").delete(']').delete('=>')
                    .delete('intro').delete('sas_up').delete('languages')
                    .delete('hgh_elf_ably_1').delete('hgh_elf_ably_2').gsub("\n", ' ').squeeze(' ')
-      text_output_info(info_mod)
+      text_output_info(info_mod, player_choose)
     end
   end
 
@@ -25,7 +25,9 @@ class Races
   def races_info(player)
     # races = {human: 'Человек', half_orc: 'Полуорк', elf: 'Эльф'}
     puts 'Вам дозволено выбрать расу:'
-    puts '[1] Человек     [2] Полуорк       [3] Эльф '
+    puts '[1] ' + 'Человек  '.blue +
+         '[2] ' + 'Полуорк  '.green +
+         '[3] ' + 'Эльф  '.brown
     puts
     player_choose = gets.to_i
     puts
@@ -105,6 +107,7 @@ class Races
     player.main_stat[:CON] = player.main_stat[:CON] + 1
     player.vision = {dark_vision: {bright: 60, dim: 30}}
     player.skill_proficiency << 'Запугивание'
+    player.race_abilities << 'Непоколебимая стойкость' << 'Свирепые атаки'
     player.race = {half_orc: 'Полуорк'}
     player.abilities = {relentless_endurance: true}
   end

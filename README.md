@@ -18,9 +18,11 @@ To do list:
 
 Long-Time:
 - Change languages: make read, write, speak languages
+- use Redis non-relation data base
 
 
 Done:<br>
+~~- use gem colorize https://github.com/fazibear/colorize~~
 1. Make Intro text output <br>
         ~~1) add.yml file for keeping text~~ <br>
         ~~2) add.yml files for keeping global, player values~~ <br>

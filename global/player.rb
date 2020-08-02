@@ -47,9 +47,14 @@ class Player < Global
   def player_choose_main_stats_info(player)
     # choose_stat = choose_stat
     while random_player_stats.any?
-
+      # color = [brown, green, red, blue, cyan, magenta, gray]
       puts 'Введите номер характеристики, которую хотите изменить: ...'
-      puts "[1] Сила [2] Ловкость [3] Телосложение [4] Интелект [5] Мудрость [6] Харизма"
+      puts '[1] ' + "Сила  ".brown +
+           '[2] ' + "Ловкость  ".green +
+           '[3] ' + "Телосложение  ".red  +
+           '[4] ' + "Интелект  ".blue +
+           '[5] ' + "Мудрость  ".cyan +
+           '[6] ' + "Харизма  ".magenta
       puts
       player_choose = gets.to_i
       puts
@@ -83,7 +88,7 @@ class Player < Global
 
       #protect from multiply choices one main stat
       unless tmp_player_key_protect.include?(key)
-        puts "Вы выбрали параметр #{TEXT_GLOBAL['main_stats_info_text']["#{text_key}"]}"
+        puts 'Вы выбрали параметр: ' + "#{TEXT_GLOBAL['main_stats_info_text']["#{text_key}"]}".color_stat_text[:main_stat][player_choose - 1]
         yes_no_choose_text
         user_choice = gets.to_i
         if user_choice == 1
@@ -100,12 +105,12 @@ class Player < Global
 
       else
         puts "### Вы уже выбирали Характеристику #{TEXT_GLOBAL['main_stats_info_text']["#{text_key}"]}, выберите другую ###"
-        player_choose_main_stats(player_choose = gets.to_i)
+        player_choose_main_stats(player_choose = gets.to_i, player)
       end
 
     else
       puts '### Вы ввели неверную Характеристику, которую хотите изменить ###'
-      player_choose_main_stats(player_choose = gets.to_i)
+      player_choose_main_stats(player_choose = gets.to_i, player)
     end
   end
 
@@ -129,7 +134,8 @@ class Player < Global
 
       main_stats_display(player)
       puts "Оставшиеся значения: "
-      p random_player_stats
+      d20_text(random_player_stats)
+      puts
       puts
     else
       puts '### Вы ввели неверное значение ###'
@@ -143,7 +149,16 @@ class Player < Global
     puts 'Вы владеете следующими языками:'
     if languages
       languages.each do |key|
-        p text[key.to_s]
+        if text[key.to_s] == "Общий"
+          print text[key.to_s].blue
+          puts
+        elsif text[key.to_s] == "Эльфийский"
+          print text[key.to_s].brown
+          puts
+        elsif text[key.to_s] == "Орочий"
+          print text[key.to_s].green
+          puts
+        end
       end
     else
       puts 'Вы пока не владеете никакими языками'
