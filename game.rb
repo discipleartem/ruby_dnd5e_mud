@@ -1,6 +1,7 @@
 require_relative 'global/intro'
 require_relative 'global/player'
 require_relative 'global/races'
+require_relative 'global/classes'
 
 
 include Intro
@@ -8,9 +9,9 @@ include Intro
 ############### Game Structure ###############
 
 #Intro
-game_intro
-yes_no_choose_text
-player_yes_no_choose_input('no_choose')
+# game_intro
+# yes_no_choose_text
+# player_yes_no_choose_input('no_choose')
 
 
 #Player creation
@@ -29,3 +30,4 @@ race.races_info(player)
 player.main_stats_display(player)
 
 #Choosing class
+player_class = Classes.new

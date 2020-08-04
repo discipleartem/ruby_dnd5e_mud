@@ -60,16 +60,17 @@ class Races
 
 
   def set_races_language(player)
-    #               [0]                [1]              [2]
-    languages = {common: 'Общий', orc: 'Орочий', elf: 'Эльфийский'}
+    #                   [0]              [1]
+    languages = {orc: 'Орочий', elf: 'Эльфийский'}
    #display languages
    player.player_display_languages(player)
 
     puts 'Выберите дополнительный язык, которым желаете овладеть:'
-    puts "[1] #{languages[:common]}  [2] #{languages[:orc]} [3] #{languages[:elf]}"
+    puts '[1] ' + "#{languages[:orc]}".green +
+         '[2] ' + "#{languages[:elf]}".brown
     player_choose = gets.to_i
 
-    if player_choose.between?(1, 3)
+    if player_choose.between?(1, 2)
 
       unless player.languages.include?(languages.keys[player_choose - 1])
         player.languages = player.languages.push(languages.keys[player_choose - 1])

@@ -22,7 +22,7 @@ Long-Time:
 
 
 Done:<br>
-~~- use gem colorize https://github.com/fazibear/colorize~~
+~~- add color output~~
 1. Make Intro text output <br>
         ~~1) add.yml file for keeping text~~ <br>
         ~~2) add.yml files for keeping global, player values~~ <br>
@@ -41,3 +41,5 @@ Done:<br>
         ~~3) create race human~~ <br>
         ~~4) create race orc~~ <br>
         ~~5) create race elf~~ <br>
+4. Global changes <br>
+~~- add main stat modify~~ <br>

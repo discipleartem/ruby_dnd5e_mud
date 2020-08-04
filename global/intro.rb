@@ -1,6 +1,6 @@
 require 'yaml'
 require_relative '../global/dice'
-require_relative '../global/data/color'
+require_relative '../global/data/color/color'
 
 
 module Intro
