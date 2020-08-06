@@ -27,6 +27,10 @@ player.main_stats_display(player)
 #Choosing race
 race = Races.new
 race.races_info(player)
+
+# add to main_stats_display
+player.player_mastery(level)
+
 player.main_stats_display(player)
 
 #Choosing class

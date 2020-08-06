@@ -22,9 +22,11 @@ class Global
   attr_accessor :abilities
   attr_accessor :race_abilities
   attr_accessor :weapon_proficiency
+  attr_accessor :armor_proficiency
   attr_accessor :skill_proficiency
   attr_accessor :magic
   attr_accessor :level
+  attr_accessor :saving_throws
 
   TEXT_GLOBAL = YAML.load_file('global/data/global_text.yml')
 
@@ -34,7 +36,6 @@ class Global
     @size = 'medium'
     @speed = 30
     @skill_proficiency = []
-    @weapon_proficiency = []
     @race_abilities = []
     @languages = [:common]
     @hp_max = 1

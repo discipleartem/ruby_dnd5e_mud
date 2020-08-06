@@ -13,6 +13,6 @@ Races
     method Orc
 
 Classes
-    method Warrior
+    method Fighter
     method Barbarian
     method Wizard

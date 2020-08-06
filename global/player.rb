@@ -10,6 +10,9 @@ class Player < Global
   attr_accessor :main_stat
   attr_accessor :tmp_player_key_protect
   attr_accessor :age
+  attr_accessor :level
+  attr_accessor :mastery
+  attr_accessor :tools
 
 
 
@@ -19,6 +22,8 @@ class Player < Global
 
     super
     @main_stat = { STR: 0, DEX: 0, CON: 0, INT: 0, WIS: 0, CHAR: 0, LUCK: 0 }
+    @weapon_proficiency = []
+    @armor_proficiency = []
   end
 
 
@@ -164,6 +169,16 @@ class Player < Global
       puts 'Вы пока не владеете никакими языками'
     end
     puts
+  end
+
+  def player_mastery(level)
+    if level.between?(1, 4)
+      @mastery = +2
+    elsif level.between?(5, 8)
+      @mastery = +3
+    else
+      puts "### Ошибка бонуса мастерства #{@mastery} ###"
+    end
   end
 
 end
