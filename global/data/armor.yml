@@ -1,0 +1,160 @@
+light_armor:
+
+  leather:
+    name: 'Кожаный доспех'
+    info:
+      dc: 11
+      plus_dex: true
+      max_dex: true
+      need_str: false
+      snake_disadvantage: false
+    price:
+      count: 10
+      type: gold
+    weight: 10
+
+  studded_leather:
+    name: 'Доспех из проклепанной кожи'
+    info:
+      dc: 12
+      plus_dex: true
+      max_dex: true
+      need_str: false
+      snake_disadvantage: false
+    price:
+      count: 45
+      type: gold
+    weight: 13
+
+
+
+
+medium_armor:
+
+  hide:
+    name: 'Шкурный доспех'
+    info:
+      dc: 12
+      plus_dex: true
+      max_dex: 2
+      need_str: false
+      snake_disadvantage: false
+    price:
+      count: 10
+      type: gold
+    weight: 12
+
+  chain_shirt:
+    name: 'Кольчужная рубаха'
+    info:
+      dc: 13
+      plus_dex: true
+      max_dex: 2
+      need_str: false
+      snake_disadvantage: false
+    price:
+      count: 50
+      type: gold
+    weight: 20
+
+  scale_mail:
+    name: 'Чешуйчатый доспех'
+    info:
+      dc: 14
+      plus_dex: true
+      max_dex: 2
+      need_str: false
+      snake_disadvantage: true
+    price:
+      count: 50
+      type: gold
+    weight: 45
+
+  breastplate:
+    name: 'Кираса'
+    info:
+      dc: 14
+      plus_dex: true
+      max_dex: 2
+      need_str: false
+      snake_disadvantage: false
+    price:
+      count: 400
+      type: gold
+    weight: 20
+
+  half_plate:
+    name: 'Полулаты'
+    info:
+      dc: 15
+      plus_dex: true
+      max_dex: 2
+      need_str: false
+      snake_disadvantage: true
+    price:
+      count: 750
+      type: gold
+    weight: 40
+
+
+
+heavy_armor:
+
+  ring_mail:
+    name: 'Колечный доспех'
+    info:
+      dc: 14
+      need_str: false
+      snake_disadvantage: true
+    price:
+      count: 30
+      type: gold
+    weight: 40
+
+  chain_mail:
+    name: 'Кольчуга'
+    info:
+      dc: 16
+      need_str: true
+      str: 13
+      if_less: 'если Сила меньше,- этот доспех уменьшает скорость владельца на 10 фт.'
+      snake_disadvantage: true
+    price:
+      count: 75
+      type: gold
+    weight: 55
+
+  splint:
+    name: 'Наборный доспех'
+    info:
+      dc: 17
+      need_str: true
+      str: 15
+      if_less: 'если Сила меньше,- этот доспех уменьшает скорость владельца на 10 фт.'
+      snake_disadvantage: true
+    price:
+      count: 200
+      type: gold
+    weight: 60
+
+  full_plate:
+    name: 'Латный доспех'
+    info:
+      dc: 18
+      need_str: true
+      str: 15
+      if_less: 'если Сила меньше,- этот доспех уменьшает скорость владельца на 10 фт.'
+      snake_disadvantage: true
+    price:
+      count: 1500
+      type: gold
+    weight: 65
+
+shield:
+  name: 'Щит'
+  info:
+    dc: +2
+  price:
+    count: 10
+    type: gold
+  weight: 6
