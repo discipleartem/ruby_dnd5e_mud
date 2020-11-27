@@ -1,0 +1,258 @@
+melee:
+
+  simple_melee:
+
+    club:
+      name: 'Дубинка'
+      damage: 1 * d4
+      damage_type: 'дробящий'
+      properties: ['light']
+      range:
+        melee: 5
+      price:
+        count: 1
+        type: silver
+      weight: 2
+
+    dagger:
+      name: 'Кинжал'
+      damage: 1 * d4
+      damage_type: 'колющий'
+      properties: ['light', 'finesse', 'thrown']
+      range:
+        melee: 5
+        range_min: 20
+        range_max: 60
+      price:
+        count: 2
+        type: gold
+      weight: 1
+
+    greatclub:
+      name: 'Палица'
+      damage: 1 * d8
+      damage_type: 'дробящий'
+      properties: ['two_handed']
+      range:
+        melee: 5
+      price:
+        count: 2
+        type: silver
+      weight: 10
+
+    handaxe:
+      name: 'Ручной топор'
+      damage: 1 * d6
+      damage_type: 'рубящий'
+      properties: ['light', 'thrown']
+      range:
+        melee: 5
+        range_min: 20
+        range_max: 60
+      price:
+        count: 5
+        type: gold
+      weight: 2
+
+    javelin:
+      name: 'Метательное копье'
+      damage: 1 * d6
+      damage_type: 'колющий'
+      properties: ['thrown']
+      range:
+        melee: 5
+        range_min: 30
+        range_max: 120
+      price:
+        count: 5
+        type: silver
+      weight: 2
+
+    light_hammer:
+      name: 'Легкий молот'
+      damage: 1 * d4
+      damage_type: 'дробящий'
+      properties: ['light', 'thrown']
+      range:
+        melee: 5
+        range_min: 20
+        range_max: 60
+      price:
+        count: 2
+        type: gold
+      weight: 2
+
+
+    mace:
+      name: 'Булава'
+      damage: 1 * d6
+      damage_type: 'дробящий'
+      properties: nil
+      range:
+        melee: 5
+      price:
+        count: 5
+        type: gold
+      weight: 4
+
+    quarterstaff:
+      name: 'Боевой посох'
+      damage: 1 * d6
+        universal: 1 * d8
+      damage_type: 'дробящий'
+      properties: ['universal']
+      range:
+        melee: 5
+      price:
+        count: 2
+        type: silver
+      weight: 4
+
+    spear:
+      name: 'Копье'
+      damage: 1 * d6
+        universal: 1 * d8
+      damage_type: 'колющий'
+      properties: ['thrown', 'universal']
+      range:
+        melee: 5
+        range_min: 20
+        range_max: 60
+      price:
+        count: 1
+        type: gold
+      weight: 3
+
+
+  martial_melee:
+
+    battleaxe:
+      name: 'Боевой топор'
+      damage: 1 * d8
+        universal: 1 * d10
+      damage_type: 'рубящий'
+      properties: ['universal']
+      range:
+        melee: 5
+      price:
+        count: 10
+        type: gold
+      weight: 4
+
+    flail:
+      name: 'Цеп'
+      damage: 1 * d8
+      damage_type: 'дробящий'
+      properties: nil
+      range:
+        melee: 5
+      price:
+        count: 10
+        type: gold
+      weight: 2
+
+    glaive:
+      name: 'Глефа'
+      damage: 1 * d10
+      damage_type: 'рубящий'
+      properties: ['heavy', 'reach', 'two_handed']
+      attack_disadvantage: ['small', 'tiny']
+      range:
+        melee: 10
+      price:
+        count: 20
+        type: gold
+      weight: 6
+
+    greataxe:
+      name: 'Боевой топор'
+      damage: 1 * d8
+        universal: 1 * d10
+      damage_type: 'рубящий'
+      properties: ['universal']
+      range:
+        melee: 5
+      price:
+        count: 10
+        type: gold
+      weight: 4
+
+    greatsword:
+      name: 'Двуручный меч'
+      damage: 2 * d6
+      damage_type: 'рубящий'
+      properties: ['heavy', 'two_handed']
+      range:
+        melee: 5
+      price:
+        count: 50
+        type: gold
+      weight: 6
+
+    halberd:
+      name: 'Алебарда'
+      damage: 1 * d10
+      damage_type: 'рубящий'
+      properties: ['heavy', 'reach', 'two_handed']
+      attack_disadvantage: ['small', 'tiny']
+      range:
+        melee: 10
+      price:
+        count: 20
+        type: gold
+      weight: 6
+
+    Lance:
+      name: 'Длинное копье'
+      damage: 1 * d12
+      damage_type: 'колющий'
+      properties: ['reach', 'special']
+      range:
+        melee: 10
+        attack_disadvantage: 5
+      price:
+        count: 10
+        type: gold
+      weight: 6
+
+    longsword:
+      name: 'Длинный меч'
+      damage: 1 * d8
+        universal: 1 * d10
+      damage_type: 'рубящий'
+      properties: ['universal']
+      range:
+        melee: 5
+      price:
+        count: 15
+        type: gold
+      weight: 3
+
+    maul:
+      name: 'Молот'
+      damage: 2 * d6
+      damage_type: 'дробящий'
+      properties: ['heavy', 'two_handed']
+      range:
+        melee: 5
+      price:
+        count: 10
+        type: gold
+      weight: 10
+
+    morningstar:
+      name: 'Моргентштерн'
+      damage: 1 * d8
+      damage_type: 'колющий'
+      properties: nil
+      range:
+        melee: 5
+      price:
+        count: 15
+        type: gold
+      weight: 4
+
+
+
+
+#https://5e.tools/tables.html#weapons_phb
